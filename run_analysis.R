@@ -31,6 +31,8 @@ test_train_sel<-test_train[,valid_index]
 activity_lu<-read.table("activity_labels.txt",col.names=c("ID_Activity","Activity_Name"))
 test_train_end<-inner_join(activity_lu,test_train_sel)
 
+write.table(test_train_end,"test_train.txt",row.name=FALSE)
+
 # Aggreating all KPI´s based on Activity and Subject
 test_train_end_group<-group_by(test_train_end,Activity_Name,ID_Activity,Subject)
 final<-summarise_each(test_train_end_group,funs(mean))
