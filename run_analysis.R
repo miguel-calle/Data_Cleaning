@@ -34,3 +34,5 @@ test_train_end<-inner_join(activity_lu,test_train_sel)
 # Aggreating all KPI´s based on Activity and Subject
 test_train_end_group<-group_by(test_train_end,Activity_Name,ID_Activity,Subject)
 final<-summarise_each(test_train_end_group,funs(mean))
+
+write.table(final,"Table_final.txt",row.name=FALSE)
